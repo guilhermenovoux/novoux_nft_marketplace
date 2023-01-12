@@ -4,6 +4,8 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { NFTContext } from '../context/NFTContext';
+
 import images from '../assets';
 import Button from './Button';
 
@@ -11,7 +13,7 @@ const MenuItems = ({ isMobile, active, setActive }) => {
   const generateLink = (i) => {
     switch (i) {
       case 0: return '/';
-      case 1: return '/created-nfts';
+      case 1: return '/listed-nfts';
       case 2: return '/my-nfts';
       default: return '/';
     }
@@ -38,9 +40,9 @@ const MenuItems = ({ isMobile, active, setActive }) => {
 };
 
 const ButtonGroup = ({ setActive, router }) => {
-  const hasConnected = true;
+  const { connectWallet, currentAccount } = useContext(NFTContext);
 
-  return hasConnected ? (
+  return currentAccount ? (
     <Button
       btnName="Create"
       classStyles="mx-2 rounded-xl"
@@ -49,7 +51,7 @@ const ButtonGroup = ({ setActive, router }) => {
         router.push('/create-nft');
       }}
     />
-  ) : (<Button btnName="Connect" classStyles="mx-2 rounded-xl" handleClick={() => {}} />
+  ) : (<Button btnName="Connect" classStyles="mx-2 rounded-xl" handleClick={connectWallet} />
   );
 };
 

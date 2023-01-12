@@ -1,6 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+  images: {
+    domains: ['novoux.infura-ipfs.io'],
+    remotePatterns: [
 
-module.exports = nextConfig
+      {
+        protocol: 'https',
+        hostname: 'infura-ipfs.io',
+        pathname: '/ipfs/**',
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
