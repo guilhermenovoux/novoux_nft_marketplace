@@ -6,15 +6,15 @@ import { create as ipfsHttpClient } from 'ipfs-http-client';
 
 import { MarketAddress, MarketAddressABI } from './constants';
 
-const projectId = "2K5zR3tQsK14vGROjytMi69BU31" //process.env.IPFS_PROJECT_ID;
+const projectId = process.env.NEXT_PUBLIC_IPFS_PROJECT_ID;
 console.log(projectId)
-const projectSecret = "83d9d11beadcbe21abff7dd5c0723904" //process.env.API_KEY_SECRET;
+const projectSecret = process.env.NEXT_PUBLIC_API_KEY_SECRET;
 console.log(projectSecret)
 
-const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
+const auth = 'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
 
 
-const options = { host: 'ipfs.infura.io', apiPath: '/api/v0', protocol: 'https', port: 5001, headers: { authorization: auth } };
+const options = { host: 'ipfs.infura.io',port: 5001, protocol: 'https', headers: { authorization: auth } };
 const client = ipfsHttpClient(options);
 const dedicatedEndPoint = 'https://novoux.infura-ipfs.io';
 
