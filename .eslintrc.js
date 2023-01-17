@@ -90,6 +90,11 @@ module.exports = {
           'preferButton',
         ],
       },
+      {
+        "extends": ["eslint:recommended", "next"]
+      }
     ],
+    
   },
+  
 };
