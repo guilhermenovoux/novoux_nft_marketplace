@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { NFTContext } from '../context/NFTContext';
-import { Loader, Button, Banner } from '../components';
+import { Loader, Button, Banner, Input } from '../components';
 
 const ResellNFT = () => {
   const { createSale, isLoadingNFT } = useContext(NFTContext);
