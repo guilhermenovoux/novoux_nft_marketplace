@@ -14,7 +14,7 @@ console.log(projectSecret)
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
 
 
-const options = { host: 'ipfs.infura.io', protocol: 'https', port: 5001, headers: { authorization: auth } };
+const options = { host: 'novoux.ipfs.infura.io', protocol: 'https', port: 5001, headers: { authorization: auth } };
 const client = ipfsHttpClient(options);
 const dedicatedEndPoint = 'https://novoux.infura-ipfs.io';
 
