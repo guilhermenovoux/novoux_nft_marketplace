@@ -10,14 +10,19 @@ const projectId = process.env.NEXT_PUBLIC_IPFS_PROJECT_ID;
 const projectSecret = process.env.NEXT_PUBLIC_API_KEY_SECRET;
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
 
-const client = ipfsHttpClient({
-  host: 'ipfs.infura.io',
-  port: 5001,
-  protocol: 'https',
-  headers: {
-    authorization: auth,
-  },
-});
+
+const options = { host: 'ipfs.infura.io', protocol: 'https', port: 5001, headers: { authorization: auth } };
+const client = ipfsHttpClient(options);
+const dedicatedEndPoint = 'https://novoux.infura-ipfs.io';
+
+// const client = ipfsHttpClient({
+//   host: 'ipfs.infura.io',
+//   port: 5001,
+//   protocol: 'https',
+//   headers: {
+//     authorization: auth,
+//   },
+// });
 
 const fetchContract = (signerOrProvider) => new ethers.Contract(MarketAddress, MarketAddressABI, signerOrProvider);
 
@@ -59,7 +64,9 @@ export const NFTProvider = ({ children }) => {
     const subdomain = 'https://novoux.infura-ipfs.io';
     try {
       const added = await client.add({ content: file });
-      const URL = `${subdomain}/ipfs/${added.path}`;
+      //const URL = `${subdomain}/ipfs/${added.path}`;
+      const URL = `${dedicatedEndPoint}/ipfs/${added.path}`;
+
       return URL;
     } catch (error) {
       console.log('Error uploading file to IPFS.');
@@ -104,7 +111,9 @@ export const NFTProvider = ({ children }) => {
     try {
       const added = await client.add(data);
 
-      const url = `https://novoux.infura-ipfs.io/ipfs/${added.path}`;
+      //const url = `https://novoux.infura-ipfs.io/ipfs/${added.path}`;
+      const url = `${dedicatedEndPoint}/ipfs/${added.path}`;
+
 
       await createSale(url, price);
 
