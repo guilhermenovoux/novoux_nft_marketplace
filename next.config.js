@@ -7,7 +7,7 @@ const nextConfig = {
 
       {
         protocol: 'https',
-        hostname: 'infura-ipfs.io',
+        hostname: 'novoux.infura-ipfs.io',
         pathname: '/ipfs/**',
       },
     ],
