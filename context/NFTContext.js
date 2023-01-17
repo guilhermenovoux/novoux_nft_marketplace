@@ -64,7 +64,7 @@ export const NFTProvider = ({ children }) => {
   };
 
   const uploadToIPFS = async (file) => {
-    const subdomain = 'https://novoux.infura-ipfs.io';
+    const dedicatedEndPoint = 'https://novoux.infura-ipfs.io';
     try {
       const added = await client.add({ content: file });
       //const URL = `${subdomain}/ipfs/${added.path}`;
