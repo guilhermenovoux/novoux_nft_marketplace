@@ -7,8 +7,12 @@ import { create as ipfsHttpClient } from 'ipfs-http-client';
 import { MarketAddress, MarketAddressABI } from './constants';
 
 const projectId = process.env.IPFS_PROJECT_ID;
-const projectSecret = process.env.API_KEY_SECRET;
-const auth = `Basic ${buffer.Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
+console.log(projectId)
+const projectSecret = process.env.
+API_KEY_SECRET;
+console.log(projectSecret)
+
+const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
 
 
 const options = { host: 'ipfs.infura.io', protocol: 'https', port: 5001, headers: { authorization: auth } };
