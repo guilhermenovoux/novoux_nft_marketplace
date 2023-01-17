@@ -116,8 +116,10 @@ export const NFTProvider = ({ children }) => {
 
   const fetchNFTs = async () => {
     setIsLoadingNFT(false);
+    // const ALCHEMY_API_KEY = 'Hkl3gRjaeweUgWKKphq8zqWHkCUuBxNP';
 
-    const provider = new ethers.providers.JsonRpcProvider();
+    // const provider = new ethers.providers.JsonRpcProvider(`https://eth-goerli.alchemyapi.io/v2/${ALCHEMY_API_KEY}`);
+    const provider = new ethers.providers.JsonRpcProvider('https://eth-goerli.gateway.pokt.network/v1/lb/e0d7a3d4f654c1961c0aca9f');
     const contract = fetchContract(provider);
 
     const data = await contract.fetchMarketItems();

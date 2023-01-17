@@ -22,7 +22,7 @@ contract NFTMarketplace is ERC721URIStorage {
 
     // fee to list an nft on the marketplace
     // charge a listing fee.
-    uint256 listingPrice = 0.025 ether;
+    uint256 listingPrice = 0.00025 ether;
 
     // declaring the owner of the contract
     // owner earns a commision on every item sold
