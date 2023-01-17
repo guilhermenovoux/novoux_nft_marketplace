@@ -6,9 +6,9 @@ import { create as ipfsHttpClient } from 'ipfs-http-client';
 
 import { MarketAddress, MarketAddressABI } from './constants';
 
-const projectId = process.env.IPFS_PROJECT_ID;
+const projectId = "2K5zR3tQsK14vGROjytMi69BU31" //process.env.IPFS_PROJECT_ID;
 console.log(projectId)
-const projectSecret = process.env.API_KEY_SECRET;
+const projectSecret = "83d9d11beadcbe21abff7dd5c0723904" //process.env.API_KEY_SECRET;
 console.log(projectSecret)
 
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
@@ -115,6 +115,8 @@ export const NFTProvider = ({ children }) => {
       const added = await client.add(data);
 
       //const url = `https://novoux.infura-ipfs.io/ipfs/${added.path}`;
+      const dedicatedEndPoint = 'https://novoux.infura-ipfs.io';
+
       const url = `${dedicatedEndPoint}/ipfs/${added.path}`;
 
 
