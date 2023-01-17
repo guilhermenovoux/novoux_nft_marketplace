@@ -8,8 +8,7 @@ import { MarketAddress, MarketAddressABI } from './constants';
 
 const projectId = process.env.IPFS_PROJECT_ID;
 console.log(projectId)
-const projectSecret = process.env.
-API_KEY_SECRET;
+const projectSecret = process.env.API_KEY_SECRET;
 console.log(projectSecret)
 
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
